@@ -23,7 +23,7 @@ export default function Header() {
           <Link class="navbar-brand" to="/"><img id="logo-site" src={avalionIcon} alt="Logo do site" /></Link>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" to="/"> Inicio<span class="sr-only">(Página atual)</span></a>
+              <Link class="nav-link" to="/"> Inicio<span class="sr-only">(Página atual)</span></Link>
             </li>
             <li class="nav-item active">
               <Link class="nav-link" to="/">
