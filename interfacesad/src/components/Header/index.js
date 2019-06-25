@@ -2,6 +2,7 @@ import React from "react";
 import "../Bootstrap/bootstrap.min.css";
 import {Link} from 'react-router-dom'
 import avalionIcon from '../../img/avalionoff.jpg'
+import './style.css'
 
 export default function Header() {
   return (
@@ -19,15 +20,13 @@ export default function Header() {
           <span class="navbar-toggler-icon" />
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <Link class="navbar-brand" to="/">
-            <img src={avalionIcon} alt="Logo do site" />
-          </Link>
+          <Link class="navbar-brand" to="/"><img id="logo-site" src={avalionIcon} alt="Logo do site" /></Link>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
               <a class="nav-link" to="/"> Inicio<span class="sr-only">(Página atual)</span></a>
             </li>
             <li class="nav-item active">
-              <Link class="nav-link" to="/functions">
+              <Link class="nav-link" to="/">
                 Gerenciar<span class="sr-only">(Página atual)</span>
               </Link>
             </li>
