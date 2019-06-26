@@ -1,21 +1,22 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import api from '../../services/api';
 
 
-export default class DetailRating extends Component{
-    state = {
-        rating: [],
-    }
-    componentDidMount(){
-        this.loadRading();
-    }
-    loadRading = async () =>{
-        const { id } = this.props.match.params;
+export default function DetailRating (props){
+
+    const [rating, setRating] = useState([]);
+    
+   const loadRading = async () =>{
+        const { id } = props.match.params;
         const response = await api.get(`/historico/${id}/`);
-        this.setState({rating: response.data})
-        console.log(response.data.resultado.descricao)
+        setRating(response.data)
+        console.log(response.data)
     }
-    render=()=>(
+
+    useEffect(() => {
+        loadRading()
+    }, [props])
+    return (
         
         <div class="container-fluid">
         <div class="row">
@@ -38,7 +39,7 @@ export default class DetailRating extends Component{
                             <label class="col-sm-12 col-form-label">Média Geral:</label>
                         </div>
                         <div class="col col-sm-2">
-                            <input type="text" class="form-control" value={this.state.rating.media} readonly=""/>
+                            <input type="text" class="form-control" value={rating.media} readonly=""/>
                         </div>
                     </div>
     
@@ -47,13 +48,13 @@ export default class DetailRating extends Component{
                             <label class="col-sm-12 col-form-label">Média em Língua Portuguesa:</label>
                         </div>
                         <div class="col col-sm-2">
-                            <input type="text" class="form-control" value={this.state.rating.mediaPortugues} readonly=""/>
+                            <input type="text" class="form-control" value={rating.mediaPortugues} readonly=""/>
                         </div>
                         <div class="col">
                             <label class="col-sm-12 col-form-label">Média em Matemática:</label>
                         </div>
                         <div class="col col-sm-2">
-                            <input type="text" class="form-control" value={this.state.rating.mediaMatematica} readonly=""/>
+                            <input type="text" class="form-control" value={rating.mediaMatematica} readonly=""/>
                         </div>
                     </div>
     
@@ -62,13 +63,13 @@ export default class DetailRating extends Component{
                             <label class="col-sm-12 col-form-label">Presenças:</label>
                         </div>
                         <div class="col col-sm-2">
-                            <input type="text" class="form-control" value={this.state.rating.presencas} readonly=""/>
+                            <input type="text" class="form-control" value={rating.presencas} readonly=""/>
                         </div>
                         <div class="col">
                             <label class="col-sm-12 col-form-label">Faltas:</label>
                         </div>
                         <div class="col col-sm-2">
-                            <input type="text" class="form-control" value={this.state.rating.faltas} readonly=""/>
+                            <input type="text" class="form-control" value={rating.faltas} readonly=""/>
                         </div>
                     </div>
     
@@ -77,13 +78,13 @@ export default class DetailRating extends Component{
                             <label class="col-sm-12 col-form-label">Renda:</label>
                         </div>
                         <div class="col-md-4">
-                        <input type="text" class="form-control" value= {this.state.rating.renda} readonly=""/>
+                        <input type="text" class="form-control" value= {rating.renda} readonly=""/>
                         </div>
                         <div class="col">
                             <label class="col-sm-12 col-form-label">Data:</label>
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" value={this.state.rating.data} readonly=""/>
+                            <input type="text" class="form-control" value={rating.data} readonly=""/>
                         </div>
                     </div>
     
@@ -92,7 +93,7 @@ export default class DetailRating extends Component{
                             <label class="col-sm-12 col-form-label">Resultado:</label><label class="col-sm-12 col-form-label"></label>
                         </div>
                         <div class="col col-sm-2">
-                            <input type="text" class="form-control" value={this.state.rating.resultado===null ? "":this.state.rating.resultado.descricao} readonly=""/>
+                            {rating.resultado == undefined ? <p></p> : <p>{rating.resultado.descricao}</p>}
                         </div>
                     </div>
                     
