@@ -13,6 +13,7 @@ export default class DetailRating extends Component{
         const { id } = this.props.match.params;
         const response = await api.get(`/historico/${id}/`);
         this.setState({rating: response.data})
+        console.log(response.data.resultado.descricao)
     }
     render=()=>(
         
@@ -91,7 +92,7 @@ export default class DetailRating extends Component{
                             <label class="col-sm-12 col-form-label">Resultado:</label><label class="col-sm-12 col-form-label"></label>
                         </div>
                         <div class="col col-sm-2">
-                            <input type="text" class="form-control" value={this.state.rating.resultado} readonly=""/>
+                            <input type="text" class="form-control" value={this.state.rating.resultado===null ? "":this.state.rating.resultado.descricao} readonly=""/>
                         </div>
                     </div>
                     
