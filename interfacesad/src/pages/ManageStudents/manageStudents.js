@@ -8,8 +8,11 @@ export default function ManageStudents() {
   const loadStudent = async () => {
     const response = await api.get("/alunos/");
     setStudents(response.data);
-  };
-  loadStudent();
+  }
+  useEffect(()=>{
+    loadStudent();
+  },[])
+  
   return (
     <div class="row">
       <div class="col-1" />

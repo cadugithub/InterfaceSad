@@ -20,7 +20,7 @@ export default function Home(){
                 <div class="col">
                 <img src="../img/avaliacao.png" alt="Clique na avaliação" usemap="#Map1" class="border"/>
                 <map name="Map1" id="Map1">
-                <Link to="/"><area alt="Avaliacao" title="Clique para gerenciar avaliação diagnóstica" href="{% url 'gerenciar_avaliacao' %}" shape="rect" coords="2,0,510,511" /></Link>
+                <Link to="/manageEvaluations"><area alt="Avaliacao" title="Clique para gerenciar avaliação diagnóstica" href="{% url 'gerenciar_avaliacao' %}" shape="rect" coords="2,0,510,511" /></Link>
                 </map>
                 <p><strong>Avaliação Diagnóstica.</strong></p>
                 </div>
