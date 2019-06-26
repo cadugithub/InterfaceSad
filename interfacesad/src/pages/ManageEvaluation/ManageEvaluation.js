@@ -33,7 +33,7 @@ export default function ManageEvaluation (){
                             <td>{evaluations.aluno.nome}</td>
                             <td>{evaluations.data}</td>
                             <td></td>
-                            <Action result={evaluations.resultado}/>
+                            <Action result={evaluations.resultado} idStudent={evaluations.aluno.id}/>
                         </tr>
                         
                         </>
