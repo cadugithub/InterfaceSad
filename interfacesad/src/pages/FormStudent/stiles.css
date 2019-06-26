@@ -1,0 +1,10 @@
+form.border{
+    margin-top: 50px;
+    padding: 40px; 
+    border-radius: 15px; 
+    box-shadow: 10px 10px 5px #888888; 
+    width: 100%; 
+    max-width: 620px; 
+    padding: 15px; 
+    margin: auto;
+}

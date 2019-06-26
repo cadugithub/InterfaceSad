@@ -1,0 +1,15 @@
+a.navbar-brand img{
+    width: 150px;
+}
+div#subHeader{
+    padding: 10px;
+}
+ td.acoes{
+    width: 300px;
+    text-align: center;
+ }  
+
+ button{
+     background: #000;
+     margin: auto 5px auto 5px;
+ }
