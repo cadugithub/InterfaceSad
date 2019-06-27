@@ -4,36 +4,39 @@ import api from '../../services/api';
 
 export default function DetailRating (props){
 
-    const [rating, setRating] = useState([]);
-    
+    const [rating, setRating] = useState([])
+    const [matricula, setAluno] = useState([])
+
    const loadRading = async () =>{
-        const { id } = props.match.params;
-        const response = await api.get(`/historico/${id}/`);
+        const { id } = props.match.params
+        const response = await api.get(`/historico/${id}/`)
         setRating(response.data)
-        console.log(response.data)
+        console.log(response.data.aluno.matricula)
+    }
+
+    const loadAluno = async () =>{
+        const { id } = props.match.params
+        const response = await api.get(`/historico/${id}/`)
+        setAluno(response.data.aluno.matricula)
     }
 
     useEffect(() => {
-        loadRading()
+        loadRading();
+        loadAluno();
     }, [props])
     return (
         
         <div class="container-fluid">
         <div class="row">
             <div class="col">
-    
                 <h2>Detalhes Avaliação Diagnóstica</h2>
-    
                 <form action="" method="POST" class="border">
-                
                     <div class="form-group row">
                         <div class="col">
                             <label class="col-sm-12 col-form-label">Matricula:</label>
                         </div>
                         <div class="col col-sm-2">
-                            <select class="form-control">
-                                <option></option>
-                            </select>
+                            <input type="text" class="form-control" value={matricula} readonly=""/>
                         </div>
                         <div class="col">
                             <label class="col-sm-12 col-form-label">Média Geral:</label>
