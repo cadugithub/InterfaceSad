@@ -1,7 +1,8 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import api from '../../services/api';
 import '../ManageEvaluation/styles.css'
 import Action from'../../components/Actions/actions'
+
 export default function ManageEvaluation (){
     const [evaluations, setEvaluations] = useState([]);
 
@@ -9,8 +10,11 @@ export default function ManageEvaluation (){
         const response = await api.get("/historicos/");
         setEvaluations(response.data);
     };
-    loadEvaluation();
-    return(
+    useEffect(() => {
+        loadEvaluation();    
+      }, [])
+    
+    return(                              
         <div class="row">
             <div class="col-1">
             </div>
@@ -44,6 +48,7 @@ export default function ManageEvaluation (){
             <div class="col-1">
             </div>
         </div>
+        
     );
     
     
