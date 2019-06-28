@@ -1,111 +1,118 @@
-import React, {useState, useEffect} from 'react';
-import api from '../../services/api';
+import React, { useState, useEffect } from "react";
+import api from "../../services/api";
 
+export default function DetailRating(props) {
+  const [rating, setRating] = useState([]);
+  const [matricula, setAluno] = useState([]);
+  const [descricaoRenda, setdescricaoRenda] = useState([]);
 
-export default function DetailRating (props){
+  const loadRading = async () => {
+    const { id } = props.match.params;
+    const response = await api.get(`/historico/${id}/`);
+    setRating(response.data);
+    setdescricaoRenda(response.data.renda.descricao);
+    setAluno(response.data.aluno.matricula);
+    console.log(response.data.renda.descricao);
+  };
 
-    const [rating, setRating] = useState([])
-    const [matricula, setAluno] = useState([])
-
-   const loadRading = async () =>{
-        const { id } = props.match.params
-        const response = await api.get(`/historico/${id}/`)
-        setRating(response.data)
-        console.log(response.data.aluno.matricula)
-    }
-
-    const loadAluno = async () =>{
-        const { id } = props.match.params
-        const response = await api.get(`/historico/${id}/`)
-        setAluno(response.data.aluno.matricula)
-    }
-
-    useEffect(() => {
-        loadRading();
-        loadAluno();
-    }, [props])
-    return (
-        
-        <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <h2>Detalhes Avaliação Diagnóstica</h2>
-                <form action="" method="POST" class="border">
-                    <div class="form-group row">
-                        <div class="col">
-                            <label class="col-sm-12 col-form-label">Matricula:</label>
-                        </div>
-                        <div class="col col-sm-2">
-                            <input type="text" class="form-control" value={matricula} readonly=""/>
-                        </div>
-                        <div class="col">
-                            <label class="col-sm-12 col-form-label">Média Geral:</label>
-                        </div>
-                        <div class="col col-sm-2">
-                            <input type="text" class="form-control" value={rating.media} readonly=""/>
-                        </div>
-                    </div>
-    
-                    <div class="form-group row">
-                        <div class="col">
-                            <label class="col-sm-12 col-form-label">Média em Língua Portuguesa:</label>
-                        </div>
-                        <div class="col col-sm-2">
-                            <input type="text" class="form-control" value={rating.mediaPortugues} readonly=""/>
-                        </div>
-                        <div class="col">
-                            <label class="col-sm-12 col-form-label">Média em Matemática:</label>
-                        </div>
-                        <div class="col col-sm-2">
-                            <input type="text" class="form-control" value={rating.mediaMatematica} readonly=""/>
-                        </div>
-                    </div>
-    
-                    <div class="form-group row">
-                        <div class="col">
-                            <label class="col-sm-12 col-form-label">Presenças:</label>
-                        </div>
-                        <div class="col col-sm-2">
-                            <input type="text" class="form-control" value={rating.presencas} readonly=""/>
-                        </div>
-                        <div class="col">
-                            <label class="col-sm-12 col-form-label">Faltas:</label>
-                        </div>
-                        <div class="col col-sm-2">
-                            <input type="text" class="form-control" value={rating.faltas} readonly=""/>
-                        </div>
-                    </div>
-    
-                    <div class="form-group row">
-                        <div class="col">
-                            <label class="col-sm-12 col-form-label">Renda:</label>
-                        </div>
-                        <div class="col-md-4">
-                        <input type="text" class="form-control" value= {rating.renda} readonly=""/>
-                        </div>
-                        <div class="col">
-                            <label class="col-sm-12 col-form-label">Data:</label>
-                        </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" value={rating.data} readonly=""/>
-                        </div>
-                    </div>
-    
-                    <div class="form-group row">
-                        <div class="col">
-                            <label class="col-sm-12 col-form-label">Resultado:</label><label class="col-sm-12 col-form-label"></label>
-                        </div>
-                        <div class="col col-sm-2">
-                            {rating.resultado == undefined ? <p></p> : <p>{rating.resultado.descricao}</p>}
-                        </div>
-                    </div>
-                    
-                </form>
-    
-            </div>
+  useEffect(() => {
+    loadRading();
+  }, [props]);
+  return (
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-3" />
+        <div className="col-6">
+          <h2>Detalhes Avaliação</h2>
         </div>
-    </div>
-    
-    );
+        <div className="col-3" />
+      </div>
 
+      <div className="row">
+        <div className="col-1" />
+        <div className="col">
+          <form action="" className="border">
+            <div className="form-group row">
+              <label className="col-3 col-form-label">
+                <b>Matricula:</b>
+              </label>
+
+              <label className="col-3 col-form-label">{matricula}</label>
+
+              <label className="col-3 col-form-label">
+                <b>Média Geral:</b>
+              </label>
+
+              <label className="col-3 col-form-label">{rating.media}</label>
+            </div>
+
+            <div className="form-group row">
+              <label className="col-4 col-form-label">
+                <b>Média em Português:</b>
+              </label>
+              <label className="col-2 col-form-label">
+                {rating.mediaPortugues}
+              </label>
+              <label className="col-4 col-form-label">
+                <b>Média em Matemática:</b>
+              </label>
+              <label className="col-2 col-form-label">
+                {rating.mediaMatematica}
+              </label>
+            </div>
+
+            <div className="form-group row">
+              <label className="col-3 col-form-label">
+                <b>Presenças:</b>
+              </label>
+              <label className="col-3 col-form-label">{rating.presencas}</label>
+              <label className="col-3 col-form-label">
+                <b>Faltas:</b>
+              </label>
+              <label className="col-3 col-form-label">{rating.faltas}</label>
+            </div>
+
+            <div className="form-group row">
+              <label className="col-2 col-form-label">
+                <b>Renda:</b>
+              </label>
+              <label className="col-4 col-form-label">{descricaoRenda} </label>
+              <label className="col-2 col-form-label">
+                <b>Data:</b>
+              </label>
+              <label className="col-4 col-form-label">{rating.data}</label>
+            </div>
+
+            <div className="form-group row">
+                <label className="col-3 col-form-label">
+                  <b>Resultado:</b>
+                </label>
+              
+              
+              <label className="col-3 col-form-label">{rating.resultado == undefined ? (
+                  <p />
+                ) : (
+                  <p>{rating.resultado.descricao}</p>
+                )}
+              </label>
+            </div>
+            <div className="form-group">
+              <div className="col-12 col-sm-12">
+                <label for="exampleFormControlTextarea1">
+                  <b>Observação:</b>
+                </label>
+                <textarea className="col-12"
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  value={rating.observacao}
+                  rows="3"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div className="col-1" />
+      </div>
+    </div>
+  );
 }
