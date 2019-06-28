@@ -1,0 +1,27 @@
+img#logo-GenAluno {
+  width: 190px;
+  height: 190px;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+}
+img#evaluation {
+  width: 190px;
+  height: 190px;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 15px;
+  position: relative;
+}
+div.row {
+  margin: 20px;
+}
+div.card-header {
+  height: 40px;
+  background: white;
+}
+div.card-footer {
+  height: 40px;
+  background: white;
+}
