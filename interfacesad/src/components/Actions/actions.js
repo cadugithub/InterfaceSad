@@ -18,21 +18,21 @@ useEffect(() => {
   loadStudent();
 }, [])
  return props.result === null 
- ? (    <td class="acoes">
- <Link to="/resultChart"><button type="button" className="btn btn-warning" id="alter">A</button></Link>
- <button onClick = {deleteStudent} type="button" className="btn btn-danger">E</button>
+ ? (    <td className="acoes">
+ <Link to="/resultChart"><button type="button" className="btn btn-warning" id="alter">Avaliar</button></Link>
+ <button onClick = {deleteStudent} type="button" className="btn btn-danger">Excluir</button>
  <Link to={`detailRating/${props.idHistoric}`}>
-<button  type="button" className="btn btn-info">D</button>
+<button  type="button" className="btn btn-info">Detalhes</button>
  </Link>
 </td>) 
-: (<td class="acoes">
+: (<td className="acoes">
  <button onClick = {deleteStudent} type="button" className="btn btn-danger">
-   E
+   Excluir
  </button>
  <Link to="/">
  <Link to={`detailRating/${props.idHistoric}`}>
    <button type="button" className="btn btn-info">
-     D
+     Detalhes
    </button>
 </Link>
  </Link>

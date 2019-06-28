@@ -1,30 +1,85 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
+import detailEvaluation from "../../img/avaliacao.png";
+import detailStudent from "../../img/detalhesAluno.png";
+import "./style.css";
+export default function Home() {
+  return (
+    <div className="container-fluid">
+      <div className="row col-12">
+        <div className="card">
+          <div className="card-body">
+            <div className="col-5">
+              <img
+                id="logo-GenAluno"
+                src={detailStudent}
+                usemap="#Map"
+                className="border"
+              />
+              <area
+                alt="Aluno"
+                title="Clique para gerenciar Aluno"
+                shape="rect"
+                coords="2,1,511,511"
+              />
 
-
-export default function Home(){
-    return (
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col p-3 display-4">
-                <p class="text-center">O que você deseja fazer? Clique em uma imagem.</p>
-                </div>
-
-                <div class="col">
-                <Link to="/"><img src="../img/aluno1.png" alt="Clique no aluno" usemap="#Map" class="border"/></Link>
-                    <map name="Map" id="Map">
-                    <Link to="/manageStudents"><area alt="Aluno" title="Clique para gerenciar Aluno" href=" {% url 'gerenciar_aluno' %} " shape="rect" coords="2,1,511,511" /></Link>
-                    </map>
-                    <p ><strong>Gerenciar Alunos.</strong></p>
-                </div>
-                <div class="col">
-                <img src="../img/avaliacao.png" alt="Clique na avaliação" usemap="#Map1" class="border"/>
-                <map name="Map1" id="Map1">
-                <Link to="/manageEvaluations"><area alt="Avaliacao" title="Clique para gerenciar avaliação diagnóstica" href="{% url 'gerenciar_avaliacao' %}" shape="rect" coords="2,0,510,511" /></Link>
-                </map>
-                <p><strong>Avaliação Diagnóstica.</strong></p>
-                </div>
+              <map name="Map" id="Map" />
             </div>
+          </div>
         </div>
-    );
+        <div class="card text-center col-9">
+          <div class="card-header" />
+          <div class="card-body">
+            <h5 class="card-title">Gerenciar Aluno</h5>
+            <p class="card-text">Gerencie seus alunos aqui.</p>
+            <Link to="/manageStudents">
+              <a href="#" class="btn btn-primary">
+                Gerenciar
+              </a>
+            </Link>
+          </div>
+          <div class="card-footer" />
+        </div>
+        <div className="col-2" />
+      </div>
+      <div className="row col-12">
+        <div className="card">
+          <div className="card-body">
+            <div className="col">
+              <img
+                src={detailEvaluation}
+                id="evaluation"
+                alt="Clique na avaliação"
+                usemap="#Map1"
+                className="border"
+              />
+              <area
+                alt="Avaliacao"
+                title="Clique para gerenciar avaliação diagnóstica"
+                shape="rect"
+                coords="2,0,510,511"
+              />
+
+              <map name="Map1" id="Map1" />
+            </div>
+          </div>
+        </div>
+        <div class="card text-center col-9">
+          <div class="card-header" />
+          <div class="card-body">
+            <h5 class="card-title">Avaliação de Alunos</h5>
+            <p class="card-text">
+              Com suporte a texto embaixo, que funciona como uma introdução a um
+              conteúdo adicional.
+            </p>
+            <Link to="/manageEvaluations">
+              <a href="#" class="btn btn-primary">
+                Avaliar
+              </a>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
