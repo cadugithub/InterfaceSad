@@ -1,0 +1,18 @@
+button.btn .btn-warning{
+    background: white;
+    color: black;
+    border-color: black;
+}
+button.btn-warning{
+    color: white;
+}
+button.btn .btn-info{
+    background: white;
+    color: black;
+    border-color: black;
+}
+button.btn .btn-danger{
+    background: white;
+    color: black;
+    border-color: black;
+}
