@@ -1,0 +1,17 @@
+div#divSalvar{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    padding-top: 10px; 
+}
+button#btnSalvar{
+    width: 400px;
+}
+div#grafico{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+p#txtPrincipal{
+    text-align: 'justify'
+}
