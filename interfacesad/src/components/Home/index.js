@@ -27,18 +27,18 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div class="card text-center col-9">
-          <div class="card-header" />
-          <div class="card-body">
-            <h5 class="card-title">Gerenciar Aluno</h5>
-            <p class="card-text">Gerencie seus alunos aqui.</p>
+        <div className="card text-center col-9">
+          <div className="card-header" />
+          <div className="card-body">
+            <h5 className="card-title">Gerenciar Aluno</h5>
+            <p className="card-text">Gerencie seus alunos aqui.</p>
             <Link to="/manageStudents">
-              <a href="#" class="btn btn-primary">
+              <a href="#" className="btn btn-primary">
                 Gerenciar
               </a>
             </Link>
           </div>
-          <div class="card-footer" />
+          <div className="card-footer" />
         </div>
         <div className="col-2" />
       </div>
@@ -64,16 +64,16 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div class="card text-center col-9">
-          <div class="card-header" />
-          <div class="card-body">
-            <h5 class="card-title">Avaliação de Alunos</h5>
-            <p class="card-text">
+        <div className="card text-center col-9">
+          <div className="card-header" />
+          <div className="card-body">
+            <h5 className="card-title">Avaliação de Alunos</h5>
+            <p className="card-text">
               Com suporte a texto embaixo, que funciona como uma introdução a um
               conteúdo adicional.
             </p>
             <Link to="/manageEvaluations">
-              <a href="#" class="btn btn-primary">
+              <a href="#" className="btn btn-primary">
                 Avaliar
               </a>
             </Link>

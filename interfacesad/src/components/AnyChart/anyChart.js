@@ -38,7 +38,7 @@ export default function ResultChart (){
                     <label for="exampleFormControlTextarea1">
                         <b>Resultado Final:</b>
                     </label>
-                    <select class="form-control" id="finalResult">
+                    <select className="form-control" id="finalResult">
                         <option></option>
                         <option>Deferido</option>
                         <option>Indeferido</option>

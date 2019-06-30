@@ -15,22 +15,22 @@ export default function ManageStudents() {
 
   return (
     <>
-      <div class="row" id="subHeader">
-        <div class="col-1" />
-        <div class="col-9">
+      <div className="row" id="subHeader">
+        <div className="col-1" />
+        <div className="col-9">
           <h3>Gerenciamento de Alunos</h3>
         </div>
-        <div class="col" id="botao">
-          <button type="button" class="btn btn-success">
+        <div className="col" id="botao">
+          <button type="button" className="btn btn-success">
             Novo
           </button>
         </div>
-        <div class="col-1" />
+        <div className="col-1" />
       </div>
-      <div class="row">
-        <div class="col-1" />
-        <div class="col">
-          <table class="table table table-bordered table-hover">
+      <div className="row">
+        <div className="col-1" />
+        <div className="col">
+          <table className="table table table-bordered table-hover">
             <thead>
               <tr>
                 <th scope="col" width="150">
@@ -68,7 +68,7 @@ export default function ManageStudents() {
             </tbody>
           </table>
         </div>
-        <div class="col-1" />
+        <div className="col-1" />
       </div>
     </>
   );
