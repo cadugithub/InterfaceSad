@@ -14,7 +14,7 @@ export default function Routes (){
         <Route exact path="/formStudent" component={FormStudent}/>
         <Route exact path="/manageEvaluations" component ={ManageEvaluations}/>
         <Route exact path="/detailRating/:id" component ={DetailRating}/>
-        <Route exact path="/resultChart" component={AnyChart}/>
+        <Route exact path="/resultChart/id" component={AnyChart}/>
     </Switch>
     );
 }
