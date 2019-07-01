@@ -1,9 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
 import AnyChart from 'anychart-react'
 import '../Bootstrap/bootstrap.min.css'
 import './style.css'
 export default function ResultChart (props){
+    
+    const [text, setText] = useState('')
+    const [opt, setOpt] = useState('')
+    
     console.log()
+    
     return(
         <div className="row">
             <div className="col-sm-3">
@@ -29,20 +34,21 @@ export default function ResultChart (props){
                         <label for="exampleFormControlTextarea1">
                         <b>Observação:</b>
                         </label>
-                        <textarea descricao={}name="observacao"className="col-12"
+                        <textarea descricao={null} name="observacao"className="col-12"
                         className="form-control"
                         id="exampleFormControlTextarea1"
                         rows="3"
+                        onChange={e => setText(e.target.value)}
                         />
                     </div>
                     <div className="col-12 col-sm-12">
                         <label for="exampleFormControlTextarea1">
                             <b>Resultado Final:</b>
                         </label>
-                        <select className="form-control" id="finalResult">
+                        <select className="form-control" id="finalResult" defaultValue={opt} onChange={e => setOpt(e.target.value)}>
                             <option></option>
-                            <option name="deferido">Deferido</option>
-                            <option name="indeferido">Indeferido</option>
+                            <option value='Deferido' name="deferido">Deferido</option>
+                            <option value='Indeferido' name="indeferido">Indeferido</option>
                         </select>
                     </div>
                     <div className="col-12 col-sm-12" id="divSalvar">
