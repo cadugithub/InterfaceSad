@@ -16,3 +16,6 @@ button.btn .btn-danger{
     color: black;
     border-color: black;
 }
+p#txtMain{
+text-align: justify;
+}

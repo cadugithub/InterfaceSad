@@ -1,29 +1,49 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import AnyChart from 'anychart-react'
 import '../Bootstrap/bootstrap.min.css'
 import './style.css'
+import api from "../../services/api"
+
 export default function ResultChart (props){
     
-    const [text, setText] = useState('')
+    const [observation, setObservation] = useState('')
     const [opt, setOpt] = useState('')
-    
-    console.log()
-    
+    const [evaluate, setEvaluate] = useState('')
+    const [result, setResult] = useState('')
+    const { id } = props.match.params;
+
+    const loadEvaluate = async () =>{
+        const response = await api.get(`/avaliar/${id}/`)
+        setEvaluate(response.data)
+    }
+
+    const loadResult = async () =>{
+        const response = await api.get(`/resultado/`)
+        setResult(response.data)
+    }
+    const alterhist= async () => {
+        const response = await api.post(`/historico/`, {id,observation})
+        console.log(id)
+    }
+      useEffect(() => {
+        loadResult();
+        loadEvaluate();
+      }, [props]);
     return(
         <div className="row">
             <div className="col-sm-3">
             
             </div>
             <div className="col">
-            <form>
+            <form onSubmit={ () => alterhist() }>
                 <div className="form-group">
                 <div className="col-12 col-sm-12">
-                        <p id="txtPrincipal">Analisando os dados de concelhos de classes anteriores, o aluno <u>Carlos Eduardo Moreira Borges</u> possui o seguinte percentual de classificação:</p>
+                        <p id="txtMain">Analisando os dados dos conselhos de classes anteriores, o aluno <b>Carlos Eduardo Moreira Borges</b> possui o seguinte percentual de classificação:</p>
                     </div>
                 <div className="col-12 col-sm-12" id="grafico">
                     <AnyChart
                         type="pie"
-                        data={[["Deferido",0.3], ["Indeferido",0.7]]}
+                        data={[["Defere",1-`${evaluate.porcentagem}`], ["Indefere",`${evaluate.porcentagem}`]]}
                         title=""
                         width={250}
                         height={250}
@@ -38,7 +58,7 @@ export default function ResultChart (props){
                         className="form-control"
                         id="exampleFormControlTextarea1"
                         rows="3"
-                        onChange={e => setText(e.target.value)}
+                        onChange={e => setObservation(e.target.value)}
                         />
                     </div>
                     <div className="col-12 col-sm-12">
@@ -46,13 +66,20 @@ export default function ResultChart (props){
                             <b>Resultado Final:</b>
                         </label>
                         <select className="form-control" id="finalResult" defaultValue={opt} onChange={e => setOpt(e.target.value)}>
-                            <option></option>
-                            <option value='Deferido' name="deferido">Deferido</option>
-                            <option value='Indeferido' name="indeferido">Indeferido</option>
+                            {evaluate.classe == 0 ? 
+                            <>
+                            <option value='Indeferido' name="indeferido">Indefere</option> 
+                            <option value='Deferido' name="deferido">Defere</option>
+                            </>
+                            :
+                            <> 
+                            <option value='Deferido' name="deferido">Defere</option>
+                            <option value='Indeferido' name="indeferido">Indefere</option> 
+                            </>                                                                                   }
                         </select>
                     </div>
                     <div className="col-12 col-sm-12" id="divSalvar">
-                        <button  type="button" className="btn btn-primary" id="btnSalvar">Salvar</button>
+                        <button  type="submit" className="btn btn-primary" id="btnSalvar">Salvar</button>
                     </div>
                 </div>
             </form>

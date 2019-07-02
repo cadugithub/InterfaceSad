@@ -20,7 +20,7 @@ useEffect(() => {
 }, [])
  return props.result === null 
  ? (    <td className="acoes">
- <Link to={`/resultChart${props.idHistoric}`}><button type="button" className="btn btn-warning" id="alter">Avaliar</button></Link>
+ <Link to={`/resultChart/${props.idHistoric}/`}><button type="button" className="btn btn-warning" id="alter">Avaliar</button></Link>
  <button onClick = {deleteStudent} type="button" className="btn btn-danger">Excluir</button>
  <Link to={`detailRating/${props.idHistoric}`}>
 <button  type="button" className="btn btn-info">Detalhes</button>
