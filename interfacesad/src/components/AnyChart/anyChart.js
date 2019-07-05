@@ -9,7 +9,7 @@ export default function ResultChart (props){
     const [observation, setObservation] = useState('')
     const [opt, setOpt] = useState('')
     const [evaluate, setEvaluate] = useState('')
-    const [result, setResult] = useState('')
+    const [student, setStudent] = useState('')
     const { id } = props.match.params;
 
     const loadEvaluate = async () =>{
@@ -17,16 +17,17 @@ export default function ResultChart (props){
         setEvaluate(response.data)
     }
 
-    const loadResult = async () =>{
-        const response = await api.get(`/resultado/`)
-        setResult(response.data)
+    const loadStudent = async () =>{
+        const response = await api.get(`/historico/${id}/`)
+        setStudent(response.data.aluno)
+        console.log(response.data.aluno)
     }
     const alterhist= async () => {
-        const response = await api.post(`/historico/`, {id,observation})
-        console.log(id)
+        const response = await api.patch(`/historico/${id}/?observacao=${"é isso aí"}`)
+        //console.log(observation)
     }
       useEffect(() => {
-        loadResult();
+        loadStudent();
         loadEvaluate();
       }, [props]);
     return(
@@ -38,7 +39,7 @@ export default function ResultChart (props){
             <form onSubmit={ () => alterhist() }>
                 <div className="form-group">
                 <div className="col-12 col-sm-12">
-                        <p id="txtMain">Analisando os dados dos conselhos de classes anteriores, o aluno <b>Carlos Eduardo Moreira Borges</b> possui o seguinte percentual de classificação:</p>
+                        <p id="txtMain">Analisando os dados dos conselhos de classes anteriores, o aluno <b>{student.nome}</b> possui o seguinte percentual de classificação:</p>
                     </div>
                 <div className="col-12 col-sm-12" id="grafico">
                     <AnyChart
