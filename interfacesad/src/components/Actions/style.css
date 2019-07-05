@@ -19,3 +19,28 @@ button.btn .btn-danger{
 p#txtMain{
 text-align: justify;
 }
+table{
+    padding: 0px;
+    margin-top: 5px;
+}
+div.modal-body{
+    padding: 0px;
+    margin: 0px;
+}
+form{
+    margin-top: 5px;
+    padding: 0px;
+   
+}
+div.col{
+    margin-top: 0px;
+    padding: 0px;
+    
+}
+div.row{
+    margin: 0px 10px;
+    padding: 0px;
+}
+div.form-group.row{
+    margin: 0px 10px;
+}
